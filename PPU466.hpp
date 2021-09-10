@@ -120,6 +120,7 @@ struct PPU466 {
 	//   or behind (priority = 1) the background
 	//
 	struct Sprite {
+		/// screen is not square. Trucation of position to uint8 is just like mod 256. Some sprite will hide in above
 		uint8_t x = 0; //x position. 0 is the left edge of the screen.
 		uint8_t y = 240; //y position. 0 is the bottom edge of the screen. >= 240 is off-screen
 		uint8_t index = 0; //index into tile table

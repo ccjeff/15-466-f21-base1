@@ -1,0 +1,47 @@
+[
+{
+  "directory": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/build",
+  "command": "/usr/bin/clang++   -I/Users/ccjeff/Desktop/15666/15-466-f21-base1/.  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15   -std=gnu++14 -o CMakeFiles/15_466_f21_base1.dir/data_path.cpp.o -c /Users/ccjeff/Desktop/15666/15-466-f21-base1/data_path.cpp",
+  "file": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/data_path.cpp"
+},
+{
+  "directory": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/build",
+  "command": "/usr/bin/clang++   -I/Users/ccjeff/Desktop/15666/15-466-f21-base1/.  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15   -std=gnu++14 -o CMakeFiles/15_466_f21_base1.dir/GL.cpp.o -c /Users/ccjeff/Desktop/15666/15-466-f21-base1/GL.cpp",
+  "file": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/GL.cpp"
+},
+{
+  "directory": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/build",
+  "command": "/usr/bin/clang++   -I/Users/ccjeff/Desktop/15666/15-466-f21-base1/.  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15   -std=gnu++14 -o CMakeFiles/15_466_f21_base1.dir/gl_compile_program.cpp.o -c /Users/ccjeff/Desktop/15666/15-466-f21-base1/gl_compile_program.cpp",
+  "file": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/gl_compile_program.cpp"
+},
+{
+  "directory": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/build",
+  "command": "/usr/bin/clang++   -I/Users/ccjeff/Desktop/15666/15-466-f21-base1/.  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15   -std=gnu++14 -o CMakeFiles/15_466_f21_base1.dir/Load.cpp.o -c /Users/ccjeff/Desktop/15666/15-466-f21-base1/Load.cpp",
+  "file": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/Load.cpp"
+},
+{
+  "directory": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/build",
+  "command": "/usr/bin/clang++   -I/Users/ccjeff/Desktop/15666/15-466-f21-base1/.  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15   -std=gnu++14 -o CMakeFiles/15_466_f21_base1.dir/load_save_png.cpp.o -c /Users/ccjeff/Desktop/15666/15-466-f21-base1/load_save_png.cpp",
+  "file": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/load_save_png.cpp"
+},
+{
+  "directory": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/build",
+  "command": "/usr/bin/clang++   -I/Users/ccjeff/Desktop/15666/15-466-f21-base1/.  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15   -std=gnu++14 -o CMakeFiles/15_466_f21_base1.dir/main.cpp.o -c /Users/ccjeff/Desktop/15666/15-466-f21-base1/main.cpp",
+  "file": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/main.cpp"
+},
+{
+  "directory": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/build",
+  "command": "/usr/bin/clang++   -I/Users/ccjeff/Desktop/15666/15-466-f21-base1/.  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15   -std=gnu++14 -o CMakeFiles/15_466_f21_base1.dir/Mode.cpp.o -c /Users/ccjeff/Desktop/15666/15-466-f21-base1/Mode.cpp",
+  "file": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/Mode.cpp"
+},
+{
+  "directory": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/build",
+  "command": "/usr/bin/clang++   -I/Users/ccjeff/Desktop/15666/15-466-f21-base1/.  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15   -std=gnu++14 -o CMakeFiles/15_466_f21_base1.dir/PlayMode.cpp.o -c /Users/ccjeff/Desktop/15666/15-466-f21-base1/PlayMode.cpp",
+  "file": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/PlayMode.cpp"
+},
+{
+  "directory": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/build",
+  "command": "/usr/bin/clang++   -I/Users/ccjeff/Desktop/15666/15-466-f21-base1/.  -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk -mmacosx-version-min=10.15   -std=gnu++14 -o CMakeFiles/15_466_f21_base1.dir/PPU466.cpp.o -c /Users/ccjeff/Desktop/15666/15-466-f21-base1/PPU466.cpp",
+  "file": "/Users/ccjeff/Desktop/15666/15-466-f21-base1/PPU466.cpp"
+}
+]

@@ -5,3 +5,9 @@ dist/pong.pdb
 dist/SDL2.dll
 dist/pong
 dist/pong.exe
+dist/game
+CMakeLists.txt
+cmake-build-debug
+.DS_Store
+.idea/
+.vscode/

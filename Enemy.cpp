@@ -7,7 +7,7 @@
 
 Enemy::~Enemy(){}
 
-bool Enemy::update(float elapsed) {
+bool Enemy::update(float elapsed, std::vector<Missle> &missles) {
     // update enemy position
     static std::mt19937 mt; //mersenne twister pseudo-random number generator
     this->position.x -= mt()/float(mt.max()) * mt()/float(mt.max()) * speed* elapsed;
@@ -21,6 +21,11 @@ bool Enemy::update(float elapsed) {
     // this->position.y = std::max(20.0f, this->position.x);
     if (this->position.x <= 5.0f || this->position.y <= 5.0f) {
         return true;
+    }
+    this->shooting_cd -= elapsed;
+    if (this->shooting_cd <= 0) {
+        this->fire(missles);
+        this->shooting_cd = 1.0f;
     }
     return false;
 }
@@ -42,4 +47,11 @@ void Enemy::draw(int offset, PPU466& ppu) {
         ppu.sprites[offset].index = BG_TILE_IDX;
         ppu.sprites[offset].attributes = BG_PALETTE_IDX;
     }
+}
+
+void Enemy::fire(std::vector<Missle> &missles) {
+    if (shooting_cd <= 0) {
+				glm::vec2 pos(this->position.x, this->position.y - 8);
+				missles.emplace_back(pos, 50.0f, 2);
+			}
 }

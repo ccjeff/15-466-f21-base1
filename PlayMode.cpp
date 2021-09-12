@@ -112,7 +112,7 @@ void PlayMode::update(float elapsed) {
 
 	cd -= elapsed;
 	if (space.pressed) {
-		if (missles.size() <= missle_num && cd <= 0) {
+		if (cd <= 0) {
 				glm::vec2 pos(player_at.x, player_at.y + 8);
 				this->missles.emplace_back(pos, 50.0f, 1);
 				cd = 0.5f;
@@ -120,7 +120,7 @@ void PlayMode::update(float elapsed) {
 	}
 
 	for (auto e = this->enemies.begin(); e != this->enemies.end();) {
-		this->is_over = e->update(elapsed);
+		this->is_over = e->update(elapsed, this->missles);
 		if (this->is_over) break;
 		if (e->type == -1) {
 			e = this->enemies.erase(e);
@@ -134,6 +134,11 @@ void PlayMode::update(float elapsed) {
 		if (m->position.x <= player_at.x + 4 && m->position.x >= player_at.x - 4 &&
 				m->position.y <= player_at.y + 4 && m->position.y >= player_at.y - 4 && m->creator == 2) {
 			// player dies
+			--player_health;
+			if (player_health < 1) {
+				is_over = true;
+				break;
+			}
 		}
 		for (auto &e : this->enemies) {
 			if (m->position.x <= ((int)e.position.x % (int)PPU466::ScreenWidth) + 4 && (int)m->position.x >= ((int)e.position.x % (int)PPU466::ScreenWidth) - 4 &&
@@ -182,7 +187,6 @@ void PlayMode::update(float elapsed) {
 
 void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	//--- set ppu state based on game state ---
-
 	ppu.background_color = glm::u8vec4(0xff, 0xff, 0xff, 0xff);
 
 	//background scroll:
@@ -222,6 +226,7 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	// drawing score tiles on the top
 	
 	constexpr int SCORE_DISPLAY_WIDTH = 3;
+	static const int MAX_HEALTH = 5;
 	constexpr std::array<uint8_t, 10> NUMBERS_TILE_IDX = {
 		ZERO_TILE_IDX,
 		ONE_TILE_IDX,
@@ -259,6 +264,21 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 			ppu.sprites[counter + i].y = 239 - 8;
 			ppu.sprites[counter + i].index = NUMBERS_TILE_IDX.at(score_separate_digits.at(i));
 			ppu.sprites[counter + i].attributes = NUMBERS_PALETTE_IDX.at(score_separate_digits.at(i));
+			++counter;
+		}
+
+		for (int i = 0; i < MAX_HEALTH; i++) {
+			if (i <= this->player_health) {
+				ppu.sprites[counter + i].x = i * 8;
+				ppu.sprites[counter + i].y = 239 - 8;
+				ppu.sprites[counter + i].index = PLANE_SMALL_TILE_IDX;
+				ppu.sprites[counter + i].attributes = PLANE_SMALL_PALETTE_IDX;
+			} else {
+				ppu.sprites[counter + i].x = i * 8;
+				ppu.sprites[counter + i].y = 239 - 8;
+				ppu.sprites[counter + i].index = BG_TILE_IDX;
+				ppu.sprites[counter + i].attributes = BG_PALETTE_IDX;
+			}
 			++counter;
 		}
 	

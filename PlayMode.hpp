@@ -40,7 +40,7 @@ struct PlayMode : Mode {
 	float background_fade = 0.0f;
 
 	//player position: init
-	glm::vec2 player_at = glm::vec2(0.0f);
+	glm::vec2 player_at = glm::vec2(128.0f, 10.0f);
 	std::vector<Enemy> enemies;
 	std::vector<Missle> missles; 
 	
@@ -52,6 +52,8 @@ struct PlayMode : Mode {
 	float cd = 0.5f;
 	bool is_over = false;
 	int score = 0;
+	static const int MAX_HEALTH = 5;
+	int player_health = MAX_HEALTH;
 	
 	
 

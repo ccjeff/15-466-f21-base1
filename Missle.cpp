@@ -4,10 +4,18 @@ Missle::~Missle(){}
 
 void Missle::update(float elapsed) {
     // update missle position
-    this->position.y += elapsed * this->speed * 5;
-    if (this->position.y >= 240) {
-        this->creator = -1;
+    if (this->creator == 1) {
+        this->position.y += elapsed * this->speed * 5;
+        if (this->position.y >= 240) {
+            this->creator = -1;
+        }
+    } else if (this->creator == 2) {
+        this->position.y -= elapsed * this->speed * 2;
+        if (this->position.y <= 0) {
+            this->creator = -1;
+        }
     }
+    
 }
 
 void Missle::draw(int offset, PPU466 &ppu) {

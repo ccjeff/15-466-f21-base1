@@ -11,7 +11,7 @@ struct Enemy {
         : position(std::move(start)), speed(init_speed), type(type) {}
     ~Enemy();
     void update(float elapsed);
-    void draw();
+    void draw(int offset, PPU466 &ppu);
     glm::vec2 position;
     float speed;
     int type;

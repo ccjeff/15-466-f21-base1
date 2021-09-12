@@ -5,9 +5,9 @@
 //for glm::value_ptr() :
 #include <glm/gtc/type_ptr.hpp>
 
-
+// reference: https://github.com/xuxiaoqiao/15-466-f20-base1/blob/HEAD/PlayMode.cpp
+// used with modification for reading chunk files
 PlayMode::PlayMode() {
-	//TODO:
 	// you *must* use an asset pipeline of some sort to generate tiles.
 	// don't hardcode them like this!
 	// or, at least, if you do hardcode them like this,
@@ -34,11 +34,11 @@ PlayMode::PlayMode() {
 	static std::mt19937 mt; //mersenne twister pseudo-random number generator
 	for (int i = 0; i < enemy_1_num; ++i) {
 		glm::vec2 pos(mt()/float(mt.max()) * PPU466::ScreenWidth, mt()/float(mt.max()) * PPU466::ScreenHeight);
-		enemies.push_back(std::make_shared<Enemy>(pos, 5, 1));
+		this->enemies.emplace_back(pos, 5, 1);
 	}
 	for (int i = 0; i < enemy_2_num; ++i) {
 		glm::vec2 pos(mt()/float(mt.max()) * PPU466::ScreenWidth, mt()/float(mt.max()) * PPU466::ScreenHeight);
-		enemies.push_back(std::make_shared<Enemy>(pos, 5, 2));
+		this->enemies.emplace_back(pos, 5, 2);
 	}
 
 }
@@ -119,8 +119,9 @@ void PlayMode::draw(glm::uvec2 const &drawable_size) {
 	ppu.sprites[0].index = PLANE_SMALL_TILE_IDX;
 	ppu.sprites[0].attributes = PLANE_SMALL_PALETTE_IDX;
 
-	for (auto e : enemies) {
-		enemies->draw();
+	int counter = 1;
+	for (auto e :this->enemies) {
+		e.draw(counter++, ppu);
 	}
 
 	//--- actually draw ---

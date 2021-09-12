@@ -1,8 +1,9 @@
+#pragma once
+
 #include "PPU466.hpp"
 #include "Mode.hpp"
 #include "Missle.hpp"
 #include "Enemy.hpp"
-
 #include "assets/assets_res.h"
 #include "load_save_png.hpp"
 #include "data_path.hpp"
@@ -40,7 +41,7 @@ struct PlayMode : Mode {
 
 	//player position: init
 	glm::vec2 player_at = glm::vec2(0.0f);
-	std::vector<std::shared_ptr<Enemy>> enemies;
+	std::vector<Enemy> enemies;
 	std::vector<std::shared_ptr<Missle>> missles; 
 	
 	uint8_t enemy_1_num = 5;

@@ -8,11 +8,12 @@
 
 struct Enemy {
     Enemy(const glm::vec2 &start, const float init_speed, const int type) 
-        : position(std::move(start)), speed(init_speed), type(type) {}
+        : position(std::move(start)), speed(init_speed * 2), type(type) {}
     ~Enemy();
-    void update(float elapsed);
+    bool update(float elapsed);
     void draw(int offset, PPU466 &ppu);
     glm::vec2 position;
     float speed;
     int type;
+    float shooting_cd = 3.0f;
 };

@@ -12,10 +12,11 @@
 #include "read_write_chunk.hpp"
 #include "load_save_png.hpp"
 
-namespace fs = std::__fs::filesystem;
+namespace fs = std::filesystem;
 
 // reference: https://github.com/xuxiaoqiao/15-466-f20-base1/blob/HEAD/asset_pipe_converter.cpp
 // used with modification for converting raw png to chunks files
+// Takes the input assets file directory and outputs the index header and chunk files 
 
 constexpr char USAGE_PROMPT[] = R"(
 usage:
@@ -96,7 +97,6 @@ int main(int argc, char *argv[]) {
 		std::cout << USAGE_PROMPT << std::endl;
 		return 1;
 	}
-	// TODO: implement me
 	try {
 		std::map<std::string, ImgContent> raw_images = load_raw_sprite_images(argv[1]);
 		ProcessedSprites processed_sprites = process_sprite_images(raw_images);
@@ -144,7 +144,7 @@ ProcessedSprites process_sprite_images(const std::map<std::string, ImgContent> &
 					+ std::to_string(img.size[0]) + "x" + std::to_string(img.size[1]));
 		}
 		std::vector<glm::u8vec4> colors;
-		// first pass: what's the colors in this img
+		// first pass: get the colors in this img
 		for (const auto &pix : img.data) {
 			auto it = std::find(colors.begin(), colors.end(), pix);
 			if (it != colors.end()) {
@@ -171,6 +171,7 @@ ProcessedSprites process_sprite_images(const std::map<std::string, ImgContent> &
 						  return a[2] < b[2];
 					  }
 				  });
+		
 		assert(colors.size() <= 4);
 		// pad zeroes if colors.size() < 4;
 		colors.resize(4, glm::u8vec4{0, 0, 0, 0});
@@ -191,7 +192,6 @@ ProcessedSprites process_sprite_images(const std::map<std::string, ImgContent> &
 		}
 		printf("palette idx for %s: %d\n", name.c_str(), palette_index);
 		// second pass: convert the png content to tiles
-		// TODO(xiaoqiao): is this zero initialization?
 		PPU466::Tile t{};
 		for (int i = 0; i < 8 * 8; i++) {
 			int row_idx = i / 8;
@@ -232,11 +232,9 @@ void store_sprite_header_file(const ProcessedSprites &sprites, const std::string
 	}
 	header_file_stream << "#pragma once\n";
 	for (const auto &m : sprites.mapping) {
-		// write f"#define ${uppercase(resource_name)}_TILE_IDX ${tile_idx}\n"
 		header_file_stream << "#define ";
 		for (const char c : m.first) { header_file_stream << (char) toupper(c); }
 		header_file_stream << "_TILE_IDX " << m.second.first << "\n";
-		// write f"#define ${uppercase(resource_name)}_PALETTE_IDX ${palette_idx}\n"
 		header_file_stream << "#define ";
 		for (const char c : m.first) { header_file_stream << (char) toupper(c); }
 		header_file_stream << "_PALETTE_IDX " << m.second.second << "\n";

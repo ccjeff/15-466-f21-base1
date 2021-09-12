@@ -34,7 +34,7 @@ struct PlayMode : Mode {
 	struct Button {
 		uint8_t downs = 0;
 		uint8_t pressed = 0;
-	} left, right, down, up;
+	} left, right, down, up, space;
 
 	//some weird background animation:
 	float background_fade = 0.0f;
@@ -42,10 +42,16 @@ struct PlayMode : Mode {
 	//player position: init
 	glm::vec2 player_at = glm::vec2(0.0f);
 	std::vector<Enemy> enemies;
-	std::vector<std::shared_ptr<Missle>> missles; 
+	std::vector<Missle> missles; 
 	
 	uint8_t enemy_1_num = 5;
+	uint8_t curr_enemy1 = 5;
 	uint8_t enemy_2_num = 5;
+	uint8_t curr_enemy2 = 5;
+	uint8_t missle_num = 10;
+	float cd = 0.5f;
+	bool is_over = false;
+	int score = 0;
 	
 	
 
